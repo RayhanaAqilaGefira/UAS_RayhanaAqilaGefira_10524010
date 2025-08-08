@@ -1,0 +1,235 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Transaksi Pemesanan - Danira Fashion</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #ffe6f0;
+      margin: 0;
+    }
+    h1, h2 {
+      text-align: center;
+      color: #99004d;
+    }
+    .navigasi {
+      background-color: #f8c8dc;
+      padding: 10px 0;
+    }
+    .navigasi td {
+      text-align: center;
+    }
+    .navigasi a {
+      text-decoration: none;
+      color: black;
+      font-weight: bold;
+      padding: 10px 20px;
+    }
+    form, #detailPemesanan {
+      max-width: 800px;
+      margin: 30px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    td, th {
+      padding: 10px;
+      border: 1px solid #ddd;
+      text-align: center;
+    }
+    input, select, button {
+      padding: 6px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .footer {
+      text-align: center;
+      background-color: #f8c8dc;
+      padding: 10px;
+      margin-top: 30px;
+    }
+    .add-btn {
+      background-color: #ff80aa;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      padding: 10px;
+      margin-top: 10px;
+    }
+    .remove-btn {
+      background-color: #e74c3c;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+<marquee><h1>Selamat Datang di Danira Fashion</h1></marquee>
+<table class="navigasi" width="100%">
+  <tr>
+    <td><a href="index.html">Beranda</a></td>
+    <td><a href="produk.html">Produk</a></td>
+    <td><a href="transaksi.html">Transaksi</a></td>
+    <td><a href="tentang.html">Tentang Kami</a></td>
+  </tr>
+</table>
+<form id="formTransaksi" onsubmit="simpanTransaksi(event)">
+  <h2>Formulir Transaksi</h2>
+  <label>Nama Pembeli:</label>
+  <input type="text" name="nama" required>
+  <table id="produkTable">
+    <thead>
+      <tr>
+        <th>Produk</th>
+        <th>Harga</th>
+        <th>Jumlah</th>
+        <th>Total</th>
+        <th>Aksi</th>
+      </tr>
+    </thead>
+    <tbody id="produkBody"></tbody>
+  </table>
+  <button type="button" class="add-btn" onclick="tambahBaris()">+ Tambah Produk</button><br><br>
+  <label>Total Keseluruhan:</label>
+  <input type="text" id="grandTotal" readonly>
+  <br><br>
+  <button type="submit">Simpan Transaksi</button>
+</form>
+<div id="detailPemesanan" class="hidden">
+  <h2>Detail Pemesanan</h2>
+  <p><strong>Nama Pembeli:</strong> <span id="detailNama"></span></p>
+  <table id="tabelDetail">
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Produk</th>
+        <th>Harga</th>
+        <th>Jumlah</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  <p><strong>Total Bayar:</strong> <span id="detailGrandTotal"></span></p>
+</div>
+<div class="footer">
+  <p>&copy; 2025 Danira Fashion</p>
+</div>
+<script>
+  const daftarProduk = [
+    { nama: "Baju Anak Perempuan", harga: 100000 },
+    { nama: "Baju Anak Merah Maroon", harga: 150000 },
+    { nama: "Sweater Coklat Wanita", harga: 240000 },
+    { nama: "Kemeja Pink Wanita", harga: 200000 },
+    { nama: "Kaos Pria Army", harga: 250000 }
+  ];
+  function tambahBaris() {
+    const tbody = document.getElementById("produkBody");
+    const tr = document.createElement("tr");
+    const tdProduk = document.createElement("td");
+    const select = document.createElement("select");
+    select.innerHTML = daftarProduk.map(p =>
+      `<option value="${p.harga}">${p.nama} - Rp ${p.harga.toLocaleString("id-ID")}</option>`
+    ).join("");
+    select.onchange = hitungSemua;
+    tdProduk.appendChild(select);
+    const tdHarga = document.createElement("td");
+    const inputHarga = document.createElement("input");
+    inputHarga.type = "text";
+    inputHarga.readOnly = true;
+    tdHarga.appendChild(inputHarga);
+    const tdJumlah = document.createElement("td");
+    const inputJumlah = document.createElement("input");
+    inputJumlah.type = "number";
+    inputJumlah.min = "1";
+    inputJumlah.value = "1";
+    inputJumlah.oninput = hitungSemua;
+    tdJumlah.appendChild(inputJumlah);
+    const tdTotal = document.createElement("td");
+    const inputTotal = document.createElement("input");
+    inputTotal.type = "text";
+    inputTotal.readOnly = true;
+    tdTotal.appendChild(inputTotal);
+    const tdHapus = document.createElement("td");
+    const btnHapus = document.createElement("button");
+    btnHapus.type = "button";
+    btnHapus.className = "remove-btn";
+    btnHapus.textContent = "Hapus";
+    btnHapus.onclick = () => {
+      tbody.removeChild(tr);
+      hitungSemua();
+    };
+    tdHapus.appendChild(btnHapus);
+    tr.appendChild(tdProduk);
+    tr.appendChild(tdHarga);
+    tr.appendChild(tdJumlah);
+    tr.appendChild(tdTotal);
+    tr.appendChild(tdHapus);
+    tbody.appendChild(tr);
+    hitungSemua();
+  }
+  function hitungSemua() {
+    const tbody = document.getElementById("produkBody");
+    let grandTotal = 0;
+    for (let row of tbody.children) {
+      const select = row.cells[0].querySelector("select");
+      const harga = parseInt(select.value);
+      const jumlah = parseInt(row.cells[2].querySelector("input").value) || 0;
+      const total = harga * jumlah;
+      row.cells[1].querySelector("input").value = harga.toLocaleString("id-ID");
+      row.cells[3].querySelector("input").value = "Rp " + total.toLocaleString("id-ID");
+      grandTotal += total;
+    }
+    document.getElementById("grandTotal").value = "Rp " + grandTotal.toLocaleString("id-ID");
+  }
+  function simpanTransaksi(event) {
+    event.preventDefault();
+    tampilkanDetail();
+  }
+  function tampilkanDetail() {
+    const namaPembeli = document.querySelector('input[name="nama"]').value;
+    const tbody = document.getElementById("produkBody");
+    const detailTbody = document.querySelector("#tabelDetail tbody");
+    const detailNama = document.getElementById("detailNama");
+    const detailGrandTotal = document.getElementById("detailGrandTotal");
+    detailTbody.innerHTML = "";
+    let grandTotal = 0;
+    [...tbody.children].forEach((row, index) => {
+      const select = row.cells[0].querySelector("select");
+      const harga = parseInt(select.value);
+      const namaProduk = select.options[select.selectedIndex].text.split(" - ")[0];
+      const jumlah = parseInt(row.cells[2].querySelector("input").value) || 0;
+      const total = harga * jumlah;
+      grandTotal += total;
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td>${index + 1}</td>
+        <td>${namaProduk}</td>
+        <td>Rp ${harga.toLocaleString("id-ID")}</td>
+        <td>${jumlah}</td>
+        <td>Rp ${total.toLocaleString("id-ID")}</td>
+      `;
+      detailTbody.appendChild(tr);
+    });
+    detailNama.textContent = namaPembeli;
+    detailGrandTotal.textContent = "Rp " + grandTotal.toLocaleString("id-ID");
+    document.getElementById("formTransaksi").style.display = "none";
+    document.getElementById("detailPemesanan").style.display = "block";
+  }
+  window.onload = tambahBaris;
+</script
+</body>
+</html>

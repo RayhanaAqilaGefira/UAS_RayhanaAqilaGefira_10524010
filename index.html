@@ -1,0 +1,141 @@
+<html>
+<head>
+    <title>Website Penjualan - Danira Fashion</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #ffe6f0;
+        }
+        header {
+            background-color: #f8c8dc;
+            text-align: center;
+            padding: 15px 0;
+        }
+        nav {
+            background-color: #f8c8dc;
+            padding: 10px 0;
+        }
+        nav table {
+            width: 100%;
+        }
+        nav td {
+            text-align: center;
+            padding: 10px;
+        }
+        nav a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        main {
+            display: flex;
+            padding: 20px;
+            gap: 20px;
+        }
+        .konten {
+            flex: 4;
+        }
+        .konten h2 {
+            margin-bottom: 10px;
+        }
+        .produk-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .produk {
+            background-color: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            width: 200px;
+            text-align: center;
+        }
+        .produk img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .produk b {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        .produk a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 5px 10px;
+            background-color: #f08bb3;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        aside {
+            flex: 1;
+            background-color: #fff0f5;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .footer {
+            text-align: center;
+            background-color: #f8c8dc;
+            padding: 15px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <marquee><h1>Selamat Datang di Danira Fashion</h1></marquee>
+</header>
+<nav>
+    <table>
+        <tr>
+            <td><a href="index.html">Beranda</a></td>
+            <td><a href="produk.html">Produk</a></td>
+            <td><a href="transaksi.html">Transaksi</a></td>
+            <td><a href="tentang.html">Tentang Kami</a></td>
+        </tr>
+    </table>
+</nav>
+<main>
+    <div class="konten">
+        <h2>Produk Kami</h2>
+        <p>
+            Selamat datang di toko online kami. Kami menyediakan berbagai pakaian yang Anda butuhkan—mulai dari pakaian anak, wanita, hingga pria.
+        </p>
+        <div class="produk-list">
+            <div class="produk">
+                <img src="pakaianA5.jpg" alt="Baju Anak">
+                <b>Baju Anak</b>
+                <p>Harga: Rp80.000</p>
+                <a href="transaksi.html">Beli</a>
+            </div>
+            <div class="produk">
+                <img src="PakaianW6.jpg" alt="Baju Wanita">
+                <b>Baju Wanita Lengan Panjang</b>
+                <p>Harga: Rp145.000</p>
+                <a href="transaksi.html">Beli</a>
+            </div>
+            <div class="produk">
+                <img src="pakaianP1.jpg" alt="Baju Pria">
+                <b>Kemeja Pria Baby Blue</b>
+                <p>Harga: Rp240.000</p>
+                <a href="transaksi.html">Beli</a>
+            </div>
+        </div>
+    </div>
+    <aside>
+        <marquee direction="up" scrollamount="3" height="200px">
+            <p>Semoga Anda puas dengan produk-produk kami.</p>
+            <p>Diskon menarik menanti Anda!</p>
+        </marquee>
+    </aside>
+</main>
+<footer class="footer">
+    <p>&copy; 2025 Danira Fashion. All rights reserved.</p>
+</footer>
+</body>
+</html>

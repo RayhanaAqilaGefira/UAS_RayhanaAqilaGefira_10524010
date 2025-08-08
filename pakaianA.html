@@ -1,0 +1,159 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Produk - Danira Fashion</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #ffe6f0;
+        }
+        header {
+            background-color: #f8c8dc;
+            padding: 15px;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+            color: #880e4f;
+        }
+        nav {
+            background-color: #f8c8dc;
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+            color: black;
+        }
+        .container {
+            display: flex;
+            padding: 20px;
+        }
+        .sidebar {
+            width: 20%;
+            padding: 10px;
+            background-color: #fce4ec;
+            border-radius: 10px;
+            height: fit-content;
+        }
+        .sidebar a {
+            display: block;
+            margin: 8px 0;
+            color: #333;
+            text-decoration: none;
+        }
+        .content {
+            width: 60%;
+            padding: 0 20px;
+        }
+        .marquee-box {
+            width: 20%;
+            padding: 10px;
+        }
+        .marquee-box marquee {
+            background-color: #fce4ec;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        .product {
+            background-color: #fff;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .product img {
+            width: 150px;
+            border-radius: 10px;
+        }
+        .product h3 {
+            margin-top: 10px;
+            margin-bottom: 5px;
+            font-size: 18px;
+        }
+        .product p {
+            margin: 5px 0;
+        }
+        .product a {
+            display: inline-block;
+            margin-top: 10px;
+            background-color: #f06292;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        footer {
+            text-align: center;
+            background-color: #f8c8dc;
+            padding: 15px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <marquee><h1>Selamat Datang di Danira Fashion</h1></marquee>
+    </header>
+    <nav>
+        <a href="index.html">Beranda</a>
+        <a href="produk.html">Produk</a>
+        <a href="transaksi.html">Transaksi</a>
+        <a href="tentang.html">Tentang Kami</a>
+    </nav>
+    <div class="container">
+        <div class="sidebar">
+            <strong>Kategori:</strong>
+            <hr>
+            <a href="PakaianA.html" target="kanan">1. Pakaian Anak</a>
+            <a href="PakaianW.html" target="kanan">2. Pakaian Wanita</a>
+            <a href="PakaianP.html" target="kanan">3. Pakaian Pria</a>
+        </div>
+        <div class="content">
+            <h2>Produk Kami</h2>
+
+            <div class="product">
+                <img src="pakaianA5.jpg" alt="Baju Anak Perempuan">
+                <h3>Baju Anak Perempuan</h3>
+                <p>Harga: Rp. 100.000</p>
+                <a href="transaksi.html">Klik Beli</a>
+            </div>
+            <div class="product">
+                <img src="pakaianA1.jpg" alt="Baju Anak Merah Maroon">
+                <h3>Baju Anak Perempuan Merah Maroon</h3>
+                <p>Harga: Rp. 150.000</p>
+                <a href="transaksi.html">Klik Beli</a>
+            </div>
+            <div class="product">
+                <img src="pakaianA2.jpg" alt="Baju Anak Lengan Pendek">
+                <h3>Baju Anak Lengan Pendek Maroon</h3>
+                <p>Harga: Rp. 200.000</p>
+                <a href="transaksi.html">Klik Beli</a>
+            </div>
+            <div class="product">
+                <img src="pakaianA3.jpg" alt="Baju Anak Hitam">
+                <h3>Baju Anak Warna Hitam</h3>
+                <p>Harga: Rp. 150.000</p>
+                <a href="transaksi.html">Klik Beli</a>
+            </div>
+            <div class="product">
+                <img src="pakaianA4.jpg" alt="Baju Anak One Set Biru">
+                <h3>Baju Anak Biru One Set</h3>
+                <p>Harga: Rp. 160.000</p>
+                <a href="transaksi.html">Klik Beli</a>
+            </div>
+        </div>
+        <div class="marquee-box">
+            <marquee direction="up" height="200">Diskon 50% untuk pembelian pertama!</marquee>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2025 Toko Online Danira Fashion</p>
+    </footer>
+</body>
+</html>
